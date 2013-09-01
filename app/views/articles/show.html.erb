@@ -1,25 +1,14 @@
-<p id="notice"><%= notice %></p>
+<% title @article.title %>
 
-<p>
-  <b>Title:</b>
-  <%= @article.title %>
+<p class="author">
+<em>from <%= @article.author %></em>
+on <%= @article.published_on %>
 </p>
 
-<p>
-  <b>Body:</b>
-  <%= @article.body %>
-</p>
+<%= simple_format @article.body %>
 
 <p>
-  <b>Published on:</b>
-  <%= @article.published_on %>
+  <%= link_to "Edit", edit_article_path(@article) %> |
+  <%= link_to "Destroy", @article, :method => :delete, :confirm => "Are you sure?" %> |
+  <%= link_to "Back to Articles", articles_path %>
 </p>
-
-<p>
-  <b>Author:</b>
-  <%= @article.author %>
-</p>
-
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>

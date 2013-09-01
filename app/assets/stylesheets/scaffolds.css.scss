@@ -2,8 +2,8 @@ body {
   background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 11px;
+  line-height: 15px;
 }
 
 p, ol, ul, td {
@@ -67,3 +67,13 @@ div {
     list-style: square;
   }
 }
+
+#container {
+  width: 75%;
+  margin: 0 auto;
+  background-color: #FFF;
+  padding: 20px 40px;
+  border: solid 1px black;
+  margin-top: 20px;
+}
+
