@@ -12,3 +12,22 @@ on <%= @article.published_on %>
   <%= link_to "Destroy", @article, :method => :delete, :confirm => "Are you sure?" %> |
   <%= link_to "Back to Articles", articles_path %>
 </p>
+
+<% unless @article.comments.empty? %>
+  <h2><%= pluralize(@article.comments.size, 'comment') %></h2>
+
+  <div id="comments">
+  <% for comment in @article.comments %>
+    <div class="comment">
+      <strong><%= comment.author %></strong>
+      <em>on <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %></em>
+      <strong><%= comment.title %></strong>
+      <%= simple_format comment.body %>
+    </div>
+  <% end %>
+  </div>
+<% end %>
+
+<h3>Add your comment:</h3>
+<%= render :partial => 'comments/form' %>
+
