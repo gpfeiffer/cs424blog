@@ -1,4 +1,21 @@
-<h1>Listing articles</h1>
+<% title 'Articles' %>
+
+<div id="articles">
+<% @articles.each do |article| %>
+  <h2>
+    <%= link_to article.title, article %>
+    <span class="comments">
+      (<%= pluralize(article.comments.count, 'comment') %>)
+    </span>
+  </h2>
+  <div class="author">
+    from <%= article.author %> 
+    on <%= article.published_on.strftime("%b %d, %Y") %>
+  </div>
+  <div class="content"><%= simple_format article.body %></div>
+<% end %>
+</div>
+
 
 <table>
   <tr>
