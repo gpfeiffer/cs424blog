@@ -2,17 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#articles h2 {
-  font-size: 16px;
-  margin-bottom: 2px;
-}
-
-#articles h2 .comments {
-  font-size: 12px;
-  font-weight: normal;
-}
-
-#articles .author {
-  font-style: italic;
-  color: #333;
+#articles {
+  h2 {
+    font-size: 16px;
+    margin-bottom: 2px;
+    .comments {
+      font-size: 12px;
+      font-weight: normal;
+    }
+  }
+  .author {
+    font-style: italic;
+    color: #333;
+  }
 }
