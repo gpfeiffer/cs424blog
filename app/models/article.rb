@@ -2,4 +2,6 @@ class Article < ActiveRecord::Base
   attr_accessible :author, :body, :published_on, :title
 
   has_many :comments
+
+  default_scope :order => :published_on
 end

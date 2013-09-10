@@ -5,7 +5,7 @@
 on <%= @article.published_on %>
 </p>
 
-<%= simple_format @article.body %>
+<%= raw BlueCloth.new(@article.body).to_html %>
 
 <p>
   <%= link_to "Edit", edit_article_path(@article) %> |
@@ -22,7 +22,7 @@ on <%= @article.published_on %>
       <strong><%= comment.author %></strong>
       <em>on <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %></em>
       <strong><%= comment.title %></strong>
-      <%= simple_format comment.body %>
+      <%= raw BlueCloth.new(comment.body).to_html %>
     </div>
   <% end %>
   </div>
