@@ -3,5 +3,5 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ -> 
-  $("#article_published_on").datepicker()
+  $("#article_published_on").datepicker({ dateFormat: "dd/mm/yy" });
 
