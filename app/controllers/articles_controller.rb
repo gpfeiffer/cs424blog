@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @comment = Comment.new(:article_id => @article.id)
+    @comment.user = current_user
  
     respond_to do |format|
       format.html # show.html.erb
@@ -26,6 +27,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new.json
   def new
     @article = Article.new
+    @article.user = current_user
 
     respond_to do |format|
       format.html # new.html.erb

@@ -25,6 +25,7 @@ class CommentsController < ApplicationController
   # GET /comments/new.json
   def new
     @comment = Comment.new
+    @comment.user = current_user
 
     respond_to do |format|
       format.html # new.html.erb
