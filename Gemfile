@@ -45,3 +45,7 @@ gem 'jquery-ui-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem "devise"
+gem "cancan"
+gem 'bluecloth'
