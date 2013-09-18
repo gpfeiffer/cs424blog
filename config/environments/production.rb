@@ -66,6 +66,8 @@ Headblog::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # mailer settings.
+  config.action_mailer.default_url_options = { :host => 'cs424blog.herokuapp.com' }
+
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
