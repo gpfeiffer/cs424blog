@@ -60,6 +60,7 @@ class ArticlesController < ApplicationController
   # PUT /articles/1
   # PUT /articles/1.json
   def update
+    params[:article][:body] = params[:article][:body].read
     @article = Article.find(params[:id])
 
     respond_to do |format|
