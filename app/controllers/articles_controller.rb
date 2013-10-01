@@ -43,6 +43,7 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
+    params[:article][:body] = params[:article][:body].read
     @article = Article.new(params[:article])
 
     respond_to do |format|
