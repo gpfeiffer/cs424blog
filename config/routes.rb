@@ -1,4 +1,7 @@
 Headblog::Application.routes.draw do
+  resources :answers
+
+
   devise_for :users
 
   get "home/index"

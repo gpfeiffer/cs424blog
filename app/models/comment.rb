@@ -4,6 +4,8 @@ class Comment < ActiveRecord::Base
   belongs_to :article
   belongs_to :user
 
+  has_many :answers
+
   def author
     user.email
   end
