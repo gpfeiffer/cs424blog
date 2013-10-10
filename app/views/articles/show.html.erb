@@ -34,11 +34,13 @@ on <%= @article.published_on %>
       </div>
       <% comment.answers.each do |answer| %>
         <div class="answer">
+	  <strong><%= answer.author %></strong>
+          <em>on <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %>:</em>
           <%= raw BlueCloth.new(answer.body).to_html %>
-      <div>
-      <%= link_to 'Edit', edit_answer_path(answer) %> |
-      <%= link_to 'Destroy', answer, :method => :delete, :confirm => "Are you sure?" %>
-      </div>
+          <div>
+            <%= link_to 'Edit', edit_answer_path(answer) %> |
+            <%= link_to 'Destroy', answer, :method => :delete, :confirm => "Are you sure?" %>
+          </div>
         </div>
       <% end %>
     </div>
