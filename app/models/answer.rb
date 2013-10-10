@@ -3,4 +3,8 @@ class Answer < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :comment
+
+  def author
+    user.email
+  end
 end
