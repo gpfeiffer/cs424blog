@@ -7,4 +7,12 @@ module ApplicationHelper
   def show_title?
     @show_title
   end
+
+  def tag_cloud(tags, classes)
+    max = tags.map(&:count).max
+    tags.each do |tag|
+      index = tag.count.to_f / max * classes.size
+      yield(tag, classes[index.ceil-1])
+    end
+  end
 end

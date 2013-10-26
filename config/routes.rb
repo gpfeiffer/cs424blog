@@ -1,16 +1,10 @@
 Headblog::Application.routes.draw do
+  get 'tags/:tag', to: 'articles#index', as: :tag
   resources :answers
-
-
   devise_for :users
-
   get "home/index"
-
   resources :comments
-
-
   resources :articles
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

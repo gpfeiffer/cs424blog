@@ -1,5 +1,11 @@
 <% title 'Articles' %>
 
+<div id="tag_cloud">
+  <% tag_cloud Tag.tag_counts, %w{s m l} do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), :class => css_class %>
+  <% end %>
+</div>
+
 <div id="articles">
 <% @articles.each do |article| %>
   <h2>
@@ -12,6 +18,7 @@
     from <%= article.author %> 
     on <%= article.published_on.strftime("%b %d, %Y") %>
   </div>
+  <%= tags_for article %>
 <% end %>
 </div>
 

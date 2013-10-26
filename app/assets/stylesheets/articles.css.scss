@@ -25,3 +25,16 @@ table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
 }
+
+#tag_cloud {
+  width: 400px;
+  line-height: 1.6em;
+  font-weight: bold;
+  background: lightgrey;
+  padding: 1.5em;
+  border: 1px solid grey;
+  border-radius: 2em / 1em;
+  .s { font-size: 0.8em; }
+  .m { font-size: 1.2em; }
+  .l { font-size: 1.8em; }
+}

@@ -7,6 +7,8 @@ on <%= @article.published_on %>
 
 <%= raw BlueCloth.new(@article.body).to_html %>
 
+<%= tags_for @article %>
+
 <p>
   <% if can? :edit, @article %>
     <%= link_to "Edit", edit_article_path(@article) %> |

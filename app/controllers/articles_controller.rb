@@ -2,7 +2,11 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    if params[:tag]
+      @articles = Article.tagged_with(params[:tag])
+    else
+      @articles = Article.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -61,7 +65,11 @@ class ArticlesController < ApplicationController
   # PUT /articles/1
   # PUT /articles/1.json
   def update
-    params[:article][:body] = params[:article][:body].read
+    if params[:article][:body].blank? 
+      params[:article].delete(:body)
+    else
+      params[:article][:body] = params[:article][:body].read
+    end
     @article = Article.find(params[:id])
 
     respond_to do |format|
