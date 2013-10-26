@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def tag_cloud(tags, classes)
-    max = tags.map(&:count).max
+    max = tags.map(&:count).map(&:to_i).max
     tags.each do |tag|
       index = tag.count.to_f / max * classes.size
       yield(tag, classes[index.ceil-1])
