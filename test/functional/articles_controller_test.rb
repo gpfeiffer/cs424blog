@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class ArticlesControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
     @article = articles(:one)
+    @user = users(:one)
+    sign_in @user
   end
 
   test "should get index" do
@@ -17,8 +21,9 @@ class ArticlesControllerTest < ActionController::TestCase
   end
 
   test "should create article" do
+    body = fixture_file_upload('files/fixture.md', 'text/plain')
     assert_difference('Article.count') do
-      post :create, article: { author: @article.author, body: @article.body, published_on: @article.published_on, title: @article.title }
+      post :create, article: { body: body, published_on: @article.published_on, title: @article.title, user_id: @user.id }
     end
 
     assert_redirected_to article_path(assigns(:article))
@@ -35,7 +40,8 @@ class ArticlesControllerTest < ActionController::TestCase
   end
 
   test "should update article" do
-    put :update, id: @article, article: { author: @article.author, body: @article.body, published_on: @article.published_on, title: @article.title }
+    body = fixture_file_upload('files/fixture.md', 'text/plain')
+    put :update, id: @article, article: { body: body, published_on: @article.published_on, title: @article.title, user_id: @article.user_id }
     assert_redirected_to article_path(assigns(:article))
   end
 

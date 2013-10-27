@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
     @comment = comments(:one)
+    @user = users(:one)
+    sign_in @user
   end
 
   test "should get index" do
@@ -18,10 +22,10 @@ class CommentsControllerTest < ActionController::TestCase
 
   test "should create comment" do
     assert_difference('Comment.count') do
-      post :create, comment: { article_id: @comment.article_id, author: @comment.author, body: @comment.body, title: @comment.title }
+      post :create, comment: { article_id: @comment.article_id, user_id: @user.id, body: @comment.body, title: @comment.title }
     end
 
-    assert_redirected_to comment_path(assigns(:comment))
+    assert_redirected_to article_path(assigns(:comment).article)
   end
 
   test "should show comment" do
@@ -35,8 +39,8 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   test "should update comment" do
-    put :update, id: @comment, comment: { article_id: @comment.article_id, author: @comment.author, body: @comment.body, title: @comment.title }
-    assert_redirected_to comment_path(assigns(:comment))
+    put :update, id: @comment, comment: { article_id: @comment.article_id, user_id: @comment.user_id, body: @comment.body, title: @comment.title }
+    assert_redirected_to article_path(assigns(:comment).article)
   end
 
   test "should destroy comment" do
@@ -44,6 +48,6 @@ class CommentsControllerTest < ActionController::TestCase
       delete :destroy, id: @comment
     end
 
-    assert_redirected_to comments_path
+    assert_redirected_to article_path(assigns(:comment).article)
   end
 end

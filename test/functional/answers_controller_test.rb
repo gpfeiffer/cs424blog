@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class AnswersControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
     @answer = answers(:one)
+    @comment = comments(:one)
+    @user = users(:one)
+    sign_in @user
   end
 
   test "should get index" do
@@ -12,7 +17,7 @@ class AnswersControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, comment_id: @comment.id
     assert_response :success
   end
 
@@ -21,7 +26,7 @@ class AnswersControllerTest < ActionController::TestCase
       post :create, answer: { body: @answer.body, comment_id: @answer.comment_id, user_id: @answer.user_id }
     end
 
-    assert_redirected_to answer_path(assigns(:answer))
+    assert_redirected_to article_path(assigns(:answer).comment.article)
   end
 
   test "should show answer" do
@@ -36,7 +41,7 @@ class AnswersControllerTest < ActionController::TestCase
 
   test "should update answer" do
     put :update, id: @answer, answer: { body: @answer.body, comment_id: @answer.comment_id, user_id: @answer.user_id }
-    assert_redirected_to answer_path(assigns(:answer))
+    assert_redirected_to article_path(assigns(:answer).comment.article)
   end
 
   test "should destroy answer" do
@@ -44,6 +49,6 @@ class AnswersControllerTest < ActionController::TestCase
       delete :destroy, id: @answer
     end
 
-    assert_redirected_to answers_path
+    assert_redirected_to article_path(assigns(:answer).comment.article)
   end
 end
