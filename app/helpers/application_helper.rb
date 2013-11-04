@@ -15,4 +15,8 @@ module ApplicationHelper
       yield(tag, classes[index.ceil-1])
     end
   end
+
+  def markdown(text)
+    sanitize Kramdown::Document.new(text).to_html
+  end
 end

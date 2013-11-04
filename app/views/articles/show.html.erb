@@ -5,7 +5,7 @@
 on <%= @article.published_on %>
 </p>
 
-<%= raw BlueCloth.new(@article.body).to_html %>
+<%= markdown @article.body %>
 
 <%= tags_for @article %>
 
@@ -28,7 +28,7 @@ on <%= @article.published_on %>
       <strong><%= comment.author %></strong>
       <em>on <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %></em>
       <strong><%= comment.title %></strong>
-      <%= raw BlueCloth.new(comment.body).to_html %>
+      <%= markdown comment.body %>
       <div>
       <%= link_to 'Edit', edit_comment_path(comment) %> |
       <%= link_to 'Destroy', comment, :method => :delete, :confirm => "Are you sure?" %> |
@@ -38,7 +38,7 @@ on <%= @article.published_on %>
         <div class="answer">
 	  <strong><%= answer.author %></strong>
           <em>on <%= answer.created_at.strftime('%b %d, %Y at %H:%M') %>:</em>
-          <%= raw BlueCloth.new(answer.body).to_html %>
+          <%= markdown answer.body %>
           <div>
             <%= link_to 'Edit', edit_answer_path(answer) %> |
             <%= link_to 'Destroy', answer, :method => :delete, :confirm => "Are you sure?" %>
