@@ -61,6 +61,7 @@ module Headblog
     config.assets.initialize_on_precompile = false
 
     # allow table markup in sanitized HTML.
-    config.action_view.sanitized_allowed_tags = 'table', 'tr', 'td', 'th'
+    config.action_view.sanitized_allowed_tags = %w(table thead tbody tr td th)
+    config.action_view.sanitized_allowed_attributes = %w(id class style)
   end
 end
