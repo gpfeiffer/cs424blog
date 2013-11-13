@@ -62,6 +62,6 @@ module Headblog
 
     # allow table markup in sanitized HTML.
     config.action_view.sanitized_allowed_tags = %w(table thead tbody tr td th)
-    config.action_view.sanitized_allowed_attributes = %w(id class style)
+    config.action_view.sanitized_allowed_attributes = %w(id class style colspan)
   end
 end
