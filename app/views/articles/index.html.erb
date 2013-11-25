@@ -8,17 +8,17 @@
 
 <div id="articles">
 <% @articles.each do |article| %>
-  <h2>
+  <h2 style="inline">
     <%= link_to article.title, article %>
     <span class="comments">
       (<%= pluralize(article.comments.count, 'comment') %>)
+      <%= tags_for article %>
     </span>
   </h2>
   <div class="author">
     from <%= article.author %> 
     on <%= article.published_on.strftime("%b %d, %Y") %>
   </div>
-  <%= tags_for article %>
 <% end %>
 </div>
 
